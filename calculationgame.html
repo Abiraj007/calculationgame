@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.image {
+    width: 360px;
+    height: 280px;
+}
+
+.bg-container {
+    background-color: #f5f7fa;
+}
+
+.number {
+    color: #323f4b;
+    background-color: #cbd2d9;
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 8px;
+    border-color: #e4e7eb;
+    border-radius: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.operator {
+    color: #c4c4c4;
+    font-family: "Roboto";
+    font-size: 40px;
+}
+
+.user-input {
+    text-align: center;
+    color: #323f4b;
+    background-color: #cbd2d9;
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: bold;
+    width: 142px;
+    height: 60px;
+    border-style: solid;
+    border-width: 8px;
+    border-color: #e4e7eb;
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.game-result {
+    color: #ffffff;
+    background-color: #f5f7fa;
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 500;
+}
+</style>
+
+</head>
+
+<body>
+    <div class="text-center mr-5 ml-5">
+        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/sum-of-two-numbers-img.png" class="image" />
+        <div class="bg-container pt-5 pb-5">
+            <span class="number m-2" id="firstNumber"></span>
+            <span class="operator m-1" id="testing">+</span>
+            <span class="number m-2" id="secondNumber"></span>
+            <span class="operator m-1" >=</span>
+            <input class="user-input" type="text" id="userInput"/>
+            <div class="mt-4 mb-4">
+                <button id="checkButton" class="btn btn-primary mr-3" onclick="checking()">
+                    Check
+                </button>
+                <button id="restartButton" class="btn btn-primary" onclick="restart()">
+                    Restart
+                </button>
+            </div>
+            <p class="game-result" id="gameResult" style="background-color: #cbd2d9;"></p>
+        </div>
+    </div>
+    <script>
+        let value=document.getElementById("testing")
+        let test=["+","-","/","*"]
+        let mark=Math.ceil(Math.random()*4-1)
+        value.textContent=test[mark]
+let number1=Math.ceil(Math.random()*30);
+let number2=Math.ceil(Math.random()*30);
+let input=document.getElementById("userInput");
+let first=document.getElementById("firstNumber");
+first.textContent=number1;
+let second=document.getElementById("secondNumber");
+second.textContent=number2;
+let result=document.getElementById("gameResult");
+let valve=input;
+function checking(){
+    
+    let inputValue=parseInt(valve.value);
+    let firstValue=parseInt(first.textContent);
+    let secondValue=parseInt(second.textContent);
+    let addition=firstValue+secondValue;
+    let subtraction=firstValue-secondValue;
+    let multiplication=firstValue*secondValue;
+    let inputValueForDivide=parseFloat(valve.value);
+    let divide=parseInt((firstValue/secondValue)*100);
+    let division=parseFloat(divide/100);
+
+    if (inputValue===addition){
+        result.textContent="Congratulations! you got it right!!!";
+        result.style.backgroundColor="#028a0f";
+        result.style.color="white";
+        result.style.fontSize="25px";
+        result.style.padding="30px";
+    }
+    else if(inputValue===subtraction){
+        result.textContent="Congratulations! you got it right!!!";
+        result.style.backgroundColor="#028a0f";
+        result.style.color="white";
+        result.style.fontSize="25px";
+        result.style.padding="30px";
+
+    }
+    else if(inputValue===multiplication){
+        result.textContent="Congratulations! you got it right!!!";
+        result.style.backgroundColor="#028a0f";
+        result.style.color="white";
+        result.style.fontSize="25px";
+        result.style.padding="30px";
+
+    }
+    else if(inputValueForDivide===division){
+        result.textContent="Congratulations! you got it right!!!";
+        result.style.backgroundColor="#028a0f";
+        result.style.color="white";
+        result.style.fontSize="25px";
+        result.style.padding="30px";
+
+    }
+     
+    else{
+        result.textContent="Please try Again..";
+        result.style.backgroundColor="#1e217c";
+        result.style.color="#cbd2d9";
+        result.style.fontSize="25px";
+        result.style.padding="30px";
+    }
+   
+    
+}
+function restart(){
+     number1=Math.ceil(Math.random()*30);
+     number2=Math.ceil(Math.random()*30);
+     first=document.getElementById("firstNumber");
+     first.textContent=number1;
+     second=document.getElementById("secondNumber");
+     second.textContent=number2;
+     result.textContent="";
+     result.style.backgroundColor="#f5f7fa";
+     result.style.color="black";
+     result.style.fontSize="25px";
+     input.value="";
+     value=document.getElementById("testing")
+     test=["+","-","/","*"]
+     mark=Math.ceil(Math.random()*4-1)
+     value.textContent=test[mark]
+     
+}
+
+
+    </script>
+</body>
+
+</html>
